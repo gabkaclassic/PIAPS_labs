@@ -3,12 +3,26 @@ package org.gaba;
 
 import org.gaba.lab_3.participants.airplaines.Airplane;
 import org.gaba.lab_3.participants.passengers.Passenger;
+import org.gaba.lab_4.EditorPanel;
 
+import javax.swing.*;
 import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-        lab3();
+
+//        lab3();
+        lab4();
+    }
+
+    private static void lab4() {
+        JFrame frame = new JFrame("Simple Graphic Editor");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(1000, 800);
+        EditorPanel editorPanel = new EditorPanel();
+        frame.add(editorPanel);
+
+        frame.setVisible(true);
     }
 
     private static void lab3() {
