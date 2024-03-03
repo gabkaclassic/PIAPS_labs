@@ -5,6 +5,8 @@ import org.gaba.lab_3.participants.airplaines.Airplane;
 import org.gaba.lab_3.participants.passengers.Passenger;
 import org.gaba.lab_4.EditorPanel;
 import org.gaba.lab_5.*;
+import org.gaba.lab_6.Deanery;
+import org.gaba.lab_6.Department;
 
 import javax.swing.*;
 import java.util.Random;
@@ -14,7 +16,43 @@ public class Main {
 
 //        lab3();
 //        lab4();
-        lab5();
+//        lab5();
+        lab6();
+    }
+
+    private static void lab6() {
+        var deanery1 = new Deanery("Physics");
+        var deanery2 = new Deanery("Math");
+        var department1 = new Department("#1");
+        var department2 = new Department("#2");
+
+        deanery1.addObserver(department1);
+        deanery1.addObserver(department2);
+        deanery2.addObserver(department1);
+        System.out.println();
+
+        deanery1.setStatus(false);
+        deanery2.setStatus(true);
+        deanery1.notifyObservers();
+        deanery2.notifyObservers();
+        System.out.println();
+
+        deanery1.setStatus(true);
+        deanery2.setStatus(true);
+        deanery1.notifyObservers();
+        deanery2.notifyObservers();
+        System.out.println();
+
+        deanery1.setStatus(true);
+        deanery2.setStatus(false);
+        deanery1.notifyObservers();
+        deanery2.notifyObservers();
+        System.out.println();
+
+        deanery1.setStatus(false);
+        deanery2.setStatus(false);
+        deanery1.notifyObservers();
+        deanery2.notifyObservers();
     }
 
     private static void lab5() {

@@ -1,6 +1,6 @@
 package org.gaba.lab_6;
 
-public interface Subject {
+public interface ObserverSubject {
 
     void addObserver(Observer observer);
 
