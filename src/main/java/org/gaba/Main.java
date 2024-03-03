@@ -4,6 +4,7 @@ package org.gaba;
 import org.gaba.lab_3.participants.airplaines.Airplane;
 import org.gaba.lab_3.participants.passengers.Passenger;
 import org.gaba.lab_4.EditorPanel;
+import org.gaba.lab_5.*;
 
 import javax.swing.*;
 import java.util.Random;
@@ -12,7 +13,32 @@ public class Main {
     public static void main(String[] args) {
 
 //        lab3();
-        lab4();
+//        lab4();
+        lab5();
+    }
+
+    private static void lab5() {
+        var nonFormattedText = """
+            bla  bla      bla bla
+            haha    hahaha hahaha    
+            
+            
+            
+            test . text , ( blabla, haha ) .
+            blabla - haha
+            “hahaha” 
+        """;
+        System.out.println(nonFormattedText);
+        var formatter = new TextFormatter(
+                new WhitespacesFormatter(),
+                new QuotesFormatter(),
+                new SymbolWhitespaceFormatter(),
+                new DashesFormatter(),
+                new TabularFormatter(),
+                new NewLineFormatter()
+        );
+        var formattedText = formatter.format(nonFormattedText);
+        System.out.println(formattedText);
     }
 
     private static void lab4() {
