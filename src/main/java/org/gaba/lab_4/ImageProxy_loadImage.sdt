@@ -1,0 +1,6 @@
+(
+{"type":"METHOD","_classDescription":{"_className":"org.gaba.lab_4.ImageProxy","_attributes":["packageLocal"],"supers":["org.gaba.lab_4.Image"]},"language":"JAVA","_methodName":"loadImage","_attributes":["public"],"_argNames":[],"_argTypes":[],"_returnType":"void","offset":378}
+(
+{"type":"METHOD","_classDescription":{"_className":"org.gaba.lab_4.RealImage","_attributes":["public"],"supers":["org.gaba.lab_4.Image"]},"language":"JAVA","_methodName":"new","_attributes":["packageLocal"],"_argNames":["filename"],"_argTypes":["java.lang.String"],"_returnType":"org.gaba.lab_4.RealImage","offset":408}
+)
+)

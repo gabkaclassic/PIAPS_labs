@@ -1,0 +1,15 @@
+(
+{"type":"METHOD","_classDescription":{"_className":"org.gaba.Main","_attributes":["public"],"supers":[]},"language":"JAVA","_methodName":"main","_attributes":["public","static"],"_argNames":["args"],"_argTypes":["java.lang.String[]"],"_returnType":"void","offset":603}
+(
+{"type":"METHOD","_classDescription":{"_className":"org.gaba.Main","_attributes":["public"],"supers":[]},"language":"JAVA","_methodName":"lab5","_attributes":["private","static"],"_argNames":[],"_argTypes":[],"_returnType":"void","offset":688}
+(
+{"type":"METHOD","_classDescription":{"_className":"org.gaba.lab_5.TextFormatter","_attributes":["public"],"supers":["org.gaba.lab_5.Formatter"]},"language":"JAVA","_methodName":"new","_attributes":["public"],"_argNames":["nonTerminalFormatters"],"_argTypes":["org.gaba.lab_5.Formatter..."],"_returnType":"org.gaba.lab_5.TextFormatter","offset":2121}
+)
+(
+{"type":"METHOD","_classDescription":{"_className":"org.gaba.lab_5.TextFormatter","_attributes":["public"],"supers":["org.gaba.lab_5.Formatter"]},"language":"JAVA","_methodName":"format","_attributes":["public"],"_argNames":["text"],"_argTypes":["java.lang.String"],"_returnType":"java.lang.String","offset":2439}
+(
+{"type":"METHOD","_classDescription":{"_className":"org.gaba.lab_5.Formatter","_attributes":["public","abstract","interface"],"supers":[]},"language":"JAVA","_methodName":"format","_attributes":["public","abstract","interface"],"_argNames":["text"],"_argTypes":["java.lang.String"],"_returnType":"java.lang.String","offset":500}
+)
+)
+)
+)

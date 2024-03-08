@@ -1,0 +1,15 @@
+(
+{"type":"METHOD","_classDescription":{"_className":"org.gaba.Main","_attributes":["public"],"supers":[]},"language":"JAVA","_methodName":"lab4","_attributes":["private","static"],"_argNames":[],"_argTypes":[],"_returnType":"void","offset":2539}
+(
+{"type":"METHOD","_classDescription":{"_className":"org.gaba.lab_4.EditorPanel","_attributes":["public"],"supers":["javax.swing.JPanel","javax.swing.JComponent","java.awt.Container","java.awt.Component","java.awt.image.ImageObserver","java.awt.MenuContainer","java.io.Serializable","java.io.Serializable","javax.swing.TransferHandler.HasGetTransferHandler","javax.accessibility.Accessible"]},"language":"JAVA","_methodName":"new","_attributes":["public"],"_argNames":[],"_argTypes":[],"_returnType":"org.gaba.lab_4.EditorPanel","offset":2738}
+(
+{"type":"METHOD","_classDescription":{"_className":"org.gaba.lab_4.ImageProxy","_attributes":["packageLocal"],"supers":["org.gaba.lab_4.Image"]},"language":"JAVA","_methodName":"new","_attributes":["packageLocal"],"_argNames":[],"_argTypes":[],"_returnType":"org.gaba.lab_4.ImageProxy","offset":267}
+(
+{"type":"METHOD","_classDescription":{"_className":"org.gaba.lab_4.RealImage","_attributes":["public"],"supers":["org.gaba.lab_4.Image"]},"language":"JAVA","_methodName":"new","_attributes":["packageLocal"],"_argNames":["filename"],"_argTypes":["java.lang.String"],"_returnType":"org.gaba.lab_4.RealImage","offset":260}
+)
+)
+(
+{"type":"METHOD","_classDescription":{"_className":"org.gaba.lab_4.MouseHandler","_attributes":["public"],"supers":["java.awt.event.MouseAdapter","java.awt.event.MouseListener","java.util.EventListener","java.awt.event.MouseWheelListener","java.util.EventListener","java.awt.event.MouseMotionListener","java.util.EventListener"]},"language":"JAVA","_methodName":"new","_attributes":["public"],"_argNames":["panel"],"_argTypes":["org.gaba.lab_4.EditorPanel"],"_returnType":"org.gaba.lab_4.MouseHandler","offset":307}
+)
+)
+)
