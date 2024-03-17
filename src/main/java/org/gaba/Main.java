@@ -1,6 +1,5 @@
 package org.gaba;
 
-
 import org.gaba.lab_2.drivers.BusDriver;
 import org.gaba.lab_2.drivers.TaxiDriver;
 import org.gaba.lab_2.passengers.BusPassenger;
@@ -13,18 +12,56 @@ import org.gaba.lab_4.EditorPanel;
 import org.gaba.lab_5.*;
 import org.gaba.lab_6.Deanery;
 import org.gaba.lab_6.Department;
+import org.gaba.lab_7_8.Direction;
+import org.gaba.lab_7_8.SnakeGameController;
+import org.gaba.lab_7_8.SnakeGameView;
 
 import javax.swing.*;
 import java.util.Random;
+import java.util.Scanner;
+
+
 
 public class Main {
     public static void main(String[] args) {
+        lab_7_8();
+    }
 
-//        lab2();
-//        lab3();
-//        lab4();
-//        lab5();
-        lab6();
+    private static void lab_7_8() {
+        int width = 10;
+        int height = 10;
+
+        SnakeGameController controller = new SnakeGameController(width, height);
+        Scanner scanner = new Scanner(System.in);
+
+        Direction currentDirection = Direction.RIGHT;
+
+        while (!controller.isGameOver()) {
+            SnakeGameView.drawGame(width, height, controller.getSnakeHead(), controller.getSnakeBody(), controller.getFood());
+            System.out.print("Enter direction (W - up, S - down, A - left, D - right): ");
+            String input = scanner.next();
+
+            switch (input.toUpperCase()) {
+                case "W":
+                    currentDirection = Direction.UP;
+                    break;
+                case "S":
+                    currentDirection = Direction.DOWN;
+                    break;
+                case "A":
+                    currentDirection = Direction.LEFT;
+                    break;
+                case "D":
+                    currentDirection = Direction.RIGHT;
+                    break;
+                default:
+                    break;
+            }
+
+            controller.update(currentDirection);
+        }
+
+        System.out.println("Game Over!");
     }
 
     private static void lab6() {
@@ -141,78 +178,78 @@ public class Main {
     }
 
     private static void lab2() {
-            var taxi = new Taxi();
-            taxi.start();
+        var taxi = new Taxi();
+        taxi.start();
 
-            try {
-                taxi.addDriver(new BusDriver());
+        try {
+            taxi.addDriver(new BusDriver());
+        }
+        catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+        taxi.addDriver(new TaxiDriver());
+        for (int i = 0; i < 4; i++) {
+            var passengerBuilder = TaxiPassenger.builder();
+            if (i % 2 == 0) {
+                passengerBuilder.adult();
             }
-            catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
+            else {
+                passengerBuilder.child();
             }
+            taxi.addPassenger(passengerBuilder.build());
+        }
+
+        try {
             taxi.addDriver(new TaxiDriver());
-            for (int i = 0; i < 4; i++) {
-                var passengerBuilder = TaxiPassenger.builder();
-                if (i % 2 == 0) {
-                    passengerBuilder.adult();
-                }
-                else {
-                    passengerBuilder.child();
-                }
-                taxi.addPassenger(passengerBuilder.build());
-            }
+        }
+        catch (IllegalStateException e) {
+            System.out.println(e.getMessage());
+        }
+        try {
+            taxi.addPassenger(TaxiPassenger.builder().adult().build());
+        }
+        catch (IllegalStateException e) {
+            System.out.println(e.getMessage());
+        }
+        taxi.start();
+        System.out.println();
 
-            try {
-                taxi.addDriver(new TaxiDriver());
+        var bus = new Bus();
+        bus.start();
+        try {
+            bus.addDriver(new TaxiDriver());
+        }
+        catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+        bus.addDriver(new BusDriver());
+        for (int i = 0; i < 30; i++) {
+            var passengerBuilder = BusPassenger.builder();
+            if (i % 3 == 0) {
+                passengerBuilder.adult();
             }
-            catch (IllegalStateException e) {
-                System.out.println(e.getMessage());
+            else if (i % 3 == 1) {
+                passengerBuilder.beneficiary();
             }
-            try {
-                taxi.addPassenger(TaxiPassenger.builder().adult().build());
+            else {
+                passengerBuilder.child();
             }
-            catch (IllegalStateException e) {
-                System.out.println(e.getMessage());
-            }
-            taxi.start();
-            System.out.println();
+            bus.addPassenger(passengerBuilder.build());
+        }
 
-            var bus = new Bus();
-            bus.start();
-            try {
-                bus.addDriver(new TaxiDriver());
-            }
-            catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
-            }
+        try {
             bus.addDriver(new BusDriver());
-            for (int i = 0; i < 30; i++) {
-                var passengerBuilder = BusPassenger.builder();
-                if (i % 3 == 0) {
-                    passengerBuilder.adult();
-                }
-                else if (i % 3 == 1) {
-                    passengerBuilder.beneficiary();
-                }
-                else {
-                    passengerBuilder.child();
-                }
-                bus.addPassenger(passengerBuilder.build());
-            }
+        }
+        catch (IllegalStateException e) {
+            System.out.println(e.getMessage());
+        }
 
-            try {
-                bus.addDriver(new BusDriver());
-            }
-            catch (IllegalStateException e) {
-                System.out.println(e.getMessage());
-            }
-
-            try {
-                bus.addPassenger(BusPassenger.builder().adult().build());
-            }
-            catch (IllegalStateException e) {
-                System.out.println(e.getMessage());
-            }
-            bus.start();
+        try {
+            bus.addPassenger(BusPassenger.builder().adult().build());
+        }
+        catch (IllegalStateException e) {
+            System.out.println(e.getMessage());
+        }
+        bus.start();
     }
 }
