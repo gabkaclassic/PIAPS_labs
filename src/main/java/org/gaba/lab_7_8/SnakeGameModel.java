@@ -8,14 +8,20 @@ public class SnakeGameModel {
     private final int width;
     private final int height;
     private final LinkedList<Point> snake;
-    private Point food;
+    private Food apple;
 
     public SnakeGameModel(int width, int height) {
         this.width = width;
         this.height = height;
         snake = new LinkedList<>();
         snake.add(new Point(width / 2, height / 2));
-        generateFood();
+        AbstractFactory factory = new AbstractFactory();
+        AppleFactory concreteFactory = factory.getAppleFactory();
+        apple = concreteFactory.create();
+        apple.generateFood(width, height, snake);
+
+
+
     }
 
     public Point getSnakeHead() {
@@ -24,42 +30,36 @@ public class SnakeGameModel {
 
     public void moveSnake(Direction direction) {
         Point newHead = new Point(getSnakeHead());
+        Mover mover = new Mover();
         switch (direction) {
             case UP:
-                newHead.translate(0, -1);
+                mover.setMove(new Up());
                 break;
             case DOWN:
-                newHead.translate(0, 1);
+                mover.setMove(new Down());
                 break;
             case LEFT:
-                newHead.translate(-1, 0);
+                mover.setMove(new Left());
                 break;
             case RIGHT:
-                newHead.translate(1, 0);
+                mover.setMove(new Right());
                 break;
         }
+        int[] temp = mover.executeMove();
+        newHead.translate(temp[0], temp[1]);
 
-        if (newHead.equals(food)) {
+        if (newHead.equals(apple.toPoint())) {
             snake.addFirst(newHead);
-            generateFood();
+            apple.generateFood(width, height, snake);
         } else {
             snake.addFirst(newHead);
             snake.removeLast();
         }
     }
 
-    private void generateFood() {
-        Random random = new Random();
-        int x, y;
-        do {
-            x = random.nextInt(width);
-            y = random.nextInt(height);
-        } while (snake.contains(new Point(x, y)));
-        food = new Point(x, y);
-    }
 
     public Point getFood() {
-        return food;
+        return apple.toPoint();
     }
 
     public boolean isGameOver() {
